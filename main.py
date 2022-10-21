@@ -209,7 +209,7 @@ def main():
     plt.axis("off")
     plt.title("Fake Images")
     plt.imshow(np.transpose(img_list[-1],(1,2,0)))
-    plt.show()
+    plt.savefig(os.path.join(args.result_dir,'real_fake.png'))
     print("finished")
 
 if __name__=="__main__":
