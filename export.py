@@ -1,4 +1,5 @@
 import argparse
+import os
 import torch
 from models import Generator
 
@@ -11,6 +12,8 @@ def get_parser():
 
 def export():
     args=get_parser().parse_args()
+
+    os.makedirs(os.path.dirname(args.out_path),exist_ok=True)
 
     dummy_input = torch.randn(1,100,1,1)
     model = Generator()
