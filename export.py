@@ -8,6 +8,7 @@ def get_parser():
     parser=argparse.ArgumentParser()
     parser.add_argument('--generator-path',type=str,default='./results/g.pth')
     parser.add_argument('--out-path',type=str,default='./results/dcgan-generator.onnx')
+    parser.add_argument('--verbose',action='store_true' )
     return parser
 
 def export():
@@ -22,7 +23,7 @@ def export():
     input_names = [ "input" ]
     output_names = [ "output" ]
 
-    torch.onnx.export(model, dummy_input, args.out_path, verbose=True, input_names=input_names, output_names=output_names)
+    torch.onnx.export(model, dummy_input, args.out_path, verbose=args.verbose, input_names=input_names, output_names=output_names)
     print("finish")
 
 if __name__=="__main__":
